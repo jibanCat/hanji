@@ -99,11 +99,11 @@ To resolve this situation, we can use JavaScript API in http://char.iis.sinica.e
 
 The following lines show how to scrape the a bag of rare char unicodes from a text string:
 ```python
-from rare_char_converter import rare_char_converter
+from hanji import rare_char_converter as convert
 
 selenium_driver = "(PATH TO YOUR SELENIUM DRIVER)"
 text = "(YOUR HAN-JI TEXT)"
-rare_char_converter(text, selenium_driver)
+convert.rare_char_converter(text, selenium_driver)
 # Return: dict, {"(fragments of char)" : (UNICODE, string of the rare char)}
 ```
 
