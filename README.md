@@ -3,9 +3,9 @@
 - The scraper function is defined as a method in the `Book` class. You can scrape the html files using
 
 ```python
-from Book
+from hanji import Book
 # get a instance of Book class
-book = Book(bookname="name", date="2018-05-29", creator="MF)
+book = Book.Book(bookname="name", date="2018-05-29", creator="MF)
 
 # get the htmls from the Han-Ji website, The UR
 book.fetch_data('http://hanchi.ihp.sinica.edu.tw/ihpc/hanji?@30^1389784921^802^^^60311004001000010006@@460127924',
@@ -39,8 +39,9 @@ book.pretty_print(0) # 0 for the first page in scraped Han-Ji data
 - The `WenShuan.py` was designed as a wrapper of the `Book.py` and have specific methods to organize the texts files in WenShuan
 
 ```python 
+from hanji import Book
 # get a instance out of WenShuan class
-wenshuan = WenShuan('2018-05-29', 'MF')
+wenshuan = Book.WenShuan('2018-05-29', 'MF')
 wenshuan.fetch_data(URL="(URL for Han-Ji WenShuan)",
                 pages_limit=1000, print_bookmark=True,)
 
@@ -65,8 +66,8 @@ wenshuan.write_passages_ECSV()
 - The `SongShu.py` was also designed as a wrapper of `Book.py` class. SongShu organizer separated every pieces of works into passages. 
 
 ```python
-from SongShu import SongShu
-songshu = SongShu("2018-06-28", "MF")
+from hanji import Book
+songshu = Book.SongShu("2018-06-28", "MF")
 songshu.fetch_data(URL="(The first page URL of SongShu in Han-Ji)", pages_limit=2000, print_bookmark=True)
 songshu.write_htmls()
 ```
