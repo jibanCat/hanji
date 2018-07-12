@@ -34,6 +34,23 @@ book.extract_paths()
 book.pretty_print(0) # 0 for the first page in scraped Han-Ji data
 ```
 
+- To convert rare char components (構字形) in `book.flat_bodies` html sources, type
+
+```python
+# if the {name}_rare_char.json exist in your path
+book.update_rare_chars()
+```
+
+otherwise
+
+```python
+# if the {name}_rare_char.json does not exist
+driver_path = '(PATH to your selenium driver)'
+book.extract_rare_chars(driver_path) # this line would take a very long time, be careful before you execute it
+book.write_rare_chars() # write to name_rare_char.json
+book.update_rare_chars()
+```
+
 ## WenShuan (文選) Organizer
 
 - The `WenShuan.py` was designed as a wrapper of the `Book.py` and have specific methods to organize the texts files in WenShuan
