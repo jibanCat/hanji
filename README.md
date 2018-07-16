@@ -51,30 +51,30 @@ book.write_rare_chars() # write to name_rare_char.json
 book.update_rare_chars()
 ```
 
-## WenShuan (文選) Organizer
+## WenXuan (文選) Organizer
 
-- The `WenShuan.py` was designed as a wrapper of the `Book.py` and have specific methods to organize the texts files in WenShuan
+- The `WenXuan.py` was designed as a wrapper of the `Book.py` and have specific methods to organize the texts files in WenXuan
 
 ```python 
 from hanji import Book
-# get a instance out of WenShuan class
-wenshuan = Book.WenShuan('2018-05-29', 'MF')
-wenshuan.fetch_data(URL="(URL for Han-Ji WenShuan)",
+# get a instance out of WenXuan class
+wenxuan = Book.WenXuan('2018-05-29', 'MF')
+wenxuan.fetch_data(URL="(URL for Han-Ji WenXuan)",
                 pages_limit=1000, print_bookmark=True,)
 
 # organize the text files 
-wenshuan.extract_paths()         # extract the bookmarks
-wenshuan.get_author_bag()        # get the bag of author names and comments
-wenshuan.extract_meta()          # extract the meta data
-wenshuan.passages2tuples()       # get the passsage into (text, comment) tuples
-wenshuan.heads2tuples()          # get headers into (head, comment, ...) tuples
-wenshuan.extract_commentators()  # append commentators to metadata
-wenshuan.extract_sound_glosses() # append all sound glosses in comments into a list and remove them from the self.flat_passages
+wenxuan.extract_paths()         # extract the bookmarks
+wenxuan.get_author_bag()        # get the bag of author names and comments
+wenxuan.extract_meta()          # extract the meta data
+wenxuan.passages2tuples()       # get the passsage into (text, comment) tuples
+wenxuan.heads2tuples()          # get headers into (head, comment, ...) tuples
+wenxuan.extract_commentators()  # append commentators to metadata
+wenxuan.extract_sound_glosses() # append all sound glosses in comments into a list and remove them from the self.flat_passages
 ```
-- Writing to CSV: `Wenshuan.py` provides a method to write `wenshuan.flat_passages` and `wenshuan.flat_meta` to a series of CSV files in folder (default folder is `"/文選"`). Metadata is listed in the comments (`#`) in the headers. 
+- Writing to CSV: `WenXuan.py` provides a method to write `wenxuan.flat_passages` and `wenxuan.flat_meta` to a series of CSV files in folder (default folder is `"/文選"`). Metadata is listed in the comments (`#`) in the headers. 
 
 ```python
-wenshuan.write_passages_ECSV()
+wenxuan.write_passages_ECSV()
 ```
 
 
@@ -126,9 +126,11 @@ convert.rare_char_converter(text, selenium_driver)
 
 ## Tutorial List:
 
+
 1. [`Book -- Basic Usage.ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/Book%20--%20Basic%20Usage.ipynb): The basic usage of `Book.py`. The way to scrape a book in Han-Ji and class methods to do further exploration.
-2. [`WenShuan -- How to Use and Sound Glosses Search.ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenShuan%20--%20How%20to%20Use%20and%20Sound%20Glosses%20Search.ipynb): How to use WenShuan class and an exploration for sound glosses in WenShuan.
-3. [`WenShuan -- What happens to the number of separate pieces (76X comparing to 528).ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenShuan%20--%20What%20happens%20to%20the%20number%20of%20separate%20pieces%20%2876X%20comparing%20to%20528%29.ipynb): A tutorial for counting the number of piece works in WenShuan.
-4. [`WenShuan -- Rare Char Identify Using Selenium.ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenXuan%20--%20Rare%20Char%20Identify%20Using%20Selenium.ipynb): Identify the rare characters in WenShuan using rare chars search in sinica.
+2. [`WenXuan -- How to Use and Sound Glosses Search.ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenXuan%20--%20How%20to%20Use%20and%20Sound%20Glosses%20Search.ipynb): How to use WenXuan class and an exploration for sound glosses in WenXuan.
+3. [`WenXuan -- What happens to the number of separate pieces (76X comparing to 528).ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenXuan%20--%20What%20happens%20to%20the%20number%20of%20separate%20pieces%20%2876X%20comparing%20to%20528%29.ipynb): A tutorial for counting the number of piece works in WenXuan.
+4. [`WenXuan -- Rare Char Identify Using Selenium.ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenXuan%20--%20Rare%20Char%20Identify%20Using%20Selenium.ipynb): Identify the rare characters in WenXuan using rare chars search in sinica.
 5. [`SongShu -- Place Names Export (Part 1).ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/SongShu%20--%20Place%20Names%20Export%20%28Part%201%29.ipynb): How to use Songshu class and simplest regex to match all place names in the SongShu class.
 6. [`SongShu -- Place Names Export (Part 2).ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/SongShu%20--%20Place%20Names%20Export%20%28Part%202%29.ipynb): Export place names to `csv`s and data viz the frequency of characters associated with place names.
+7. [`WenXuan -- Rare Char Replacement Function`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenXuan%20--%20Rare%20Char%20Replacement%20Function.ipynb): Updating rare chars in WenXuan with corresponding unicodes using Sinica Normalization API.
