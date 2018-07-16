@@ -7,9 +7,12 @@ from hanji import Book
 # get a instance of Book class
 book = Book.Book(bookname="name", date="2018-05-29", creator="MF)
 
-# get the htmls from the Han-Ji website, The UR
+# get the htmls from the Han-Ji website, The URL should be the first page of the book you'd like to scrape
 book.fetch_data('http://hanchi.ihp.sinica.edu.tw/ihpc/hanji?@30^1389784921^802^^^60311004001000010006@@460127924',
                 pages_limit=1000, print_bookmark=False,)
+
+# Note: the url of hanji website would change for a period of time.
+#       make sure you access again the website and update the URL you would like to use.
 ```
 
 - Now, `bs4` objects are stored in the `book.flat_bodies` list. You can write the html files into `data` folder via
