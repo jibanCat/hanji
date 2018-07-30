@@ -1,13 +1,13 @@
-# Han-Ji (漢籍) Scraper
+# Han-Ji (漢籍) Fetcher
 
-- The scraper function is defined as a method in the `Book` class. You can scrape the html files using
+- The fetcher function is defined as a method in the `Book` class. You can fetch the html files using
 
 ```python
 from hanji import Book
 # get a instance of Book class
 book = Book.Book(bookname="name", date="2018-05-29", creator="MF)
 
-# get the htmls from the Han-Ji website, The URL should be the first page of the book you'd like to scrape
+# get the htmls from the Han-Ji website, The URL should be the first page of the book you'd like to fetch
 book.fetch_data('http://hanchi.ihp.sinica.edu.tw/ihpc/hanji?@30^1389784921^802^^^60311004001000010006@@460127924',
                 pages_limit=1000, print_bookmark=False,)
 
@@ -34,7 +34,7 @@ book.extract_paths()
 - To preview the first page of Han-Ji page in a pretty HTML format, type
 
 ```python
-book.pretty_print(0) # 0 for the first page in scraped Han-Ji data
+book.pretty_print(0) # 0 for the first page in fetchd Han-Ji data
 ```
 
 - To convert rare char components (構字形) in `book.flat_bodies` html sources, type
@@ -117,7 +117,7 @@ Some characters in Han-Ji are rare chars. In this case, if we use `urllib` to pa
 
 To resolve this situation, we can use JavaScript API in http://char.iis.sinica.edu.tw/ to acquire the fragments of chars, and then we can use the fragments to search the correct rare char unicodes. 
 
-The following lines show how to scrape the a bag of rare char unicodes from a text string:
+The following lines show how to fetch the a bag of rare char unicodes from a text string:
 ```python
 from hanji import rare_char_converter as convert
 
@@ -130,7 +130,7 @@ convert.rare_char_converter(text, selenium_driver)
 ## Tutorial List:
 
 
-1. [`Book -- Basic Usage.ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/Book%20--%20Basic%20Usage.ipynb): The basic usage of `Book.py`. The way to scrape a book in Han-Ji and class methods to do further exploration.
+1. [`Book -- Basic Usage.ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/Book%20--%20Basic%20Usage.ipynb): The basic usage of `Book.py`. The way to fetch a book in Han-Ji and class methods to do further exploration.
 2. [`WenXuan -- How to Use and Sound Glosses Search.ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenXuan%20--%20How%20to%20Use%20and%20Sound%20Glosses%20Search.ipynb): How to use WenXuan class and an exploration for sound glosses in WenXuan.
 3. [`WenXuan -- What happens to the number of separate pieces (76X comparing to 528).ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenXuan%20--%20What%20happens%20to%20the%20number%20of%20separate%20pieces%20%2876X%20comparing%20to%20528%29.ipynb): A tutorial for counting the number of piece works in WenXuan.
 4. [`WenXuan -- Rare Char Identify Using Selenium.ipynb`](http://nbviewer.jupyter.org/github/jibanCat/DigitalHumanities/blob/master/Han-Ji/tutorials/WenXuan%20--%20Rare%20Char%20Identify%20Using%20Selenium.ipynb): Identify the rare characters in WenXuan using rare chars search in sinica.
