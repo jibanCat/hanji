@@ -9,6 +9,7 @@ Chinese historian tagging platform, like MARKUS, could not return a probability.
 Without putting too much ML techniques on it, we can use Bayes rule to encode our domain knowledge and also return a probabilistic result. 
 
 ## Tag a time phrase
+
 For example, consider the case to tag a time phrase:
 
 ```python
@@ -17,13 +18,13 @@ For example, consider the case to tag a time phrase:
 
 We can see there are some properties to identify in this phrase: 年號 (隆安), 數字 (三、十一), 單位 (年、月). For this phrase, we can calculate the posterior probability of the phase is a time phrase given this phrase
 
-$$P(time \mid phrase) = \frac{P(phrase \mid time) \times P(time) }{ P(phrase)}$$
+<a href="https://www.codecogs.com/eqnedit.php?latex=P(time&space;\mid&space;phrase)&space;=&space;\frac{P(phrase&space;\mid&space;time)&space;\times&space;P(time)&space;}{&space;P(phrase)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(time&space;\mid&space;phrase)&space;=&space;\frac{P(phrase&space;\mid&space;time)&space;\times&space;P(time)&space;}{&space;P(phrase)}" title="P(time \mid phrase) = \frac{P(phrase \mid time) \times P(time) }{ P(phrase)}" /></a>
 
 ### Naive Bayes assumption
 
 By Naive Bayes assumption, the likelehood $P(phrase \mid time)$ could be expressed a product of individual probability of each feature:
 
-$$P(phrase \mid time) = P(features \mid time) = P(feature_1 \mid time) \times ... \times P(feature_n \mid time)$$
+<a href="https://www.codecogs.com/eqnedit.php?latex=$$P(phrase&space;\mid&space;time)&space;=&space;P(features&space;\mid&space;time)&space;=&space;P(feature_1&space;\mid&space;time)&space;\times&space;...&space;\times&space;P(feature_n&space;\mid&space;time)$$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$$P(phrase&space;\mid&space;time)&space;=&space;P(features&space;\mid&space;time)&space;=&space;P(feature_1&space;\mid&space;time)&space;\times&space;...&space;\times&space;P(feature_n&space;\mid&space;time)$$" title="$$P(phrase \mid time) = P(features \mid time) = P(feature_1 \mid time) \times ... \times P(feature_n \mid time)$$" /></a>
 
 For a time phrase in a Chinese historian text, we could build a feature vector based on our experience:
 
@@ -37,15 +38,11 @@ the probs are given by the model in my brain. We could justify this model by col
 
 The normalization factor is following
 
-$$
-P(phrase) = P(time) \prod{ P(feature_n \mid time)} + P(\sim time) \prod{ P(feature_n \mid \sim time)}
-$$
+<a href="https://www.codecogs.com/eqnedit.php?latex=P(phrase)&space;=&space;P(time)&space;\prod{&space;P(feature_n&space;\mid&space;time)}&space;&plus;&space;P(\sim&space;time)&space;\prod{&space;P(feature_n&space;\mid&space;\sim&space;time)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(phrase)&space;=&space;P(time)&space;\prod{&space;P(feature_n&space;\mid&space;time)}&space;&plus;&space;P(\sim&space;time)&space;\prod{&space;P(feature_n&space;\mid&space;\sim&space;time)}" title="P(phrase) = P(time) \prod{ P(feature_n \mid time)} + P(\sim time) \prod{ P(feature_n \mid \sim time)}" /></a>
 
 Therefore, Bayes rule give you the posterior:
 
-$$
-P(time \mid phrase) = \frac{P(time) \prod{ P(feature_n \mid time)}}{P(time) \prod{ P(feature_n \mid time)} + P(\sim time) \prod{ P(feature_n \mid \sim time)}}
-$$
+<a href="https://www.codecogs.com/eqnedit.php?latex=P(time&space;\mid&space;phrase)&space;=&space;\frac{P(time)&space;\prod{&space;P(feature_n&space;\mid&space;time)}}{P(time)&space;\prod{&space;P(feature_n&space;\mid&space;time)}&space;&plus;&space;P(\sim&space;time)&space;\prod{&space;P(feature_n&space;\mid&space;\sim&space;time)}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(time&space;\mid&space;phrase)&space;=&space;\frac{P(time)&space;\prod{&space;P(feature_n&space;\mid&space;time)}}{P(time)&space;\prod{&space;P(feature_n&space;\mid&space;time)}&space;&plus;&space;P(\sim&space;time)&space;\prod{&space;P(feature_n&space;\mid&space;\sim&space;time)}}" title="P(time \mid phrase) = \frac{P(time) \prod{ P(feature_n \mid time)}}{P(time) \prod{ P(feature_n \mid time)} + P(\sim time) \prod{ P(feature_n \mid \sim time)}}" /></a>
 
 ## Examples:
 
@@ -68,10 +65,10 @@ So, we are 89% certain that `"隆安三年十一月"` is a time phrase, 0.2% cer
 
 ## Tag a Place Name (Table)
 
-| is place | 地名 | 方向 | 城鎮 | 單位 | 數字 |  年號   | 經驗字 |
+| is place | 地名 | 方向 | 城鎮 | 單位 | 數字 |  年號   | 經驗字 |
 | ----    | ---  | --- | --- | --- | --- | ---      | --- |
-| +       | 0.8  | 0.75 | 0.7 | 0.2 | 0.2 | 0.3     | 0.4 | 
-| -       | 0.2  | 0.25 | 0.3 | 0.8 | 0.8 | 0.7     | 0.6 | 
+| +       | 0.8  | 0.75 | 0.7 | 0.2 | 0.2 | 0.3     | 0.4 |
+| -       | 0.2  | 0.25 | 0.3 | 0.8 | 0.8 | 0.7     | 0.6 |
 
 ## Naive Class for Single Phrase
 
@@ -89,14 +86,14 @@ or
 ```python
 from Naive import NaiveBayes
 
-naive = NaiveBayes(filename=filename_of_definition_json, prior=0.3)
+naive = NaiveBayes(filename="definition_time.json", prior=0.3)
 ```
 
-- calc the prob of a phrase beinging a time phrase
+- calc the prob of a phrase being a time phrase
 
 ```python
 naive.calc_posterior('興寧三年')
-# 0.8571428571428572
+# 0.8571428571428572
 ```
 
 - Still working on: fit a bunch of training data to get the likelihood and iterables.
